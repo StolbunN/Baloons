@@ -1,0 +1,52 @@
+// компонент кнопки
+
+.btn
+    &, &:link, &:visited
+        @include style-link($color-grey)
+        padding: 1.5rem 4rem
+        font-weight: 600
+        font-size: 2rem
+        line-height: 2.4rem
+        letter-spacing: .5rem
+        background: $color-white
+        border-radius: 5rem
+        transition: all .3s
+        position: relative
+        border: none
+        box-shadow: $box-shadow
+        @include respond(tab-land)
+            font-size: 1.6rem
+            padding: 1.2rem 2.5rem
+        @include respond(tab-port)
+            font-size: 2.2rem
+            padding: 2rem 5rem
+    &:hover
+        transform: translateY(-0.4rem)
+        box-shadow: $box-shadow
+        &::after
+            transform: scaleX(1.5) scaleY(1.7)
+            opacity: 0
+    &:active
+        transform: translateY(-0.2rem)
+        box-shadow: $box-shadow
+    &::after
+        content: ""
+        height: 100%
+        width: 100%
+        display: inline-block
+        position: absolute
+        background: $color-white
+        border-radius: 5rem
+        top: 0
+        left: 0
+        z-index: -1
+        transition: all .5s
+    &_animated
+        animation: BtnToUp 1s ease-out 1s
+        animation-fill-mode: backwards
+    &_brown
+        &, &:link, &:visited
+            background: $color-brown-dark
+            color: $color-white
+        &::after
+            background: $color-brown-dark
